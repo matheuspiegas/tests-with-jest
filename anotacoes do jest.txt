@@ -1,0 +1,6 @@
+mockResolvedValue --> serve para dizer o que uma função irá retornar;
+
+jest.mock(path) -> serve para mockar um modulo, por exemplo: quero mockar uma função em especifico eu passo o caminho dela e depois nos testes posso usar: (mockedFn as 
+jest.Mock).mockResolvedValue();
+
+
