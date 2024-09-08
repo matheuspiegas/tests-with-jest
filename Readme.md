@@ -19,3 +19,5 @@ To run unit tests just paste the command below:
  1. **Preparation**: First you need to comment out the singleton file located in root of the application;
 2. **Execution**: After that, run the integration tests with the following command:
 **`npm test -- --findRelatedTests __tests__/index.test.ts `**
+## Run E2E tests
+`npx tsx test-selenium.ts`
