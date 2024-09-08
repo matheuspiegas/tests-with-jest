@@ -5,6 +5,15 @@ import { server } from "../src";
 import prisma from "../src/db";
 
 describe("Integration tests", () => {
+	beforeAll(async () => {
+		await prisma.todos.deleteMany();
+		await prisma.todos.create({
+			data: { id: 4, title: "Test todo" },
+		});
+		await prisma.todos.create({
+			data: { id: 5, title: "Test todo" },
+		});
+	});
 	describe("GET route", () => {
 		it("should return 200", async () => {
 			const response = await server.inject({
@@ -55,7 +64,7 @@ describe("Integration tests", () => {
 			const response = await server.inject({
 				method: "PUT",
 				payload: { title: "test" },
-				url: "/api/user/update/1",
+				url: "/api/user/update/1000",
 			});
 			expect(response.statusCode).toBe(404);
 		});
@@ -65,18 +74,11 @@ describe("Integration tests", () => {
 				payload: { title: "updated title" },
 				url: "/api/user/update/5",
 			});
-			console.log(response.json());
 			expect(response.statusCode).toBe(200);
 		});
 	});
 
 	describe("DELETE route", () => {
-		beforeAll(async () => {
-			await prisma.todos.create({
-				data: { id: 4, title: "Test todo" },
-			});
-		});
-
 		it("should return 400 if missing id", async () => {
 			const response = await server.inject({
 				method: "DELETE",
