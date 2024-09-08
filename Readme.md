@@ -4,7 +4,7 @@ This project was developed during the Software Testing course in college. It inc
 To install the project dependencies, run the following command:
  `npm install` 
 ## Database installation
-Run `npx prisma migrate dev --name init`
+Run `npx prisma migrate dev --name init` then type `Y`
 ## Running tests
 ### Important Note:
 
